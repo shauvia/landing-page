@@ -1,0 +1,155 @@
+body {
+  width: auto;
+  background-color: rgb(218, 238, 255);
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(8, 79, 141);
+  height: 15vh;
+}
+
+nav > ul {
+  width: 100%;
+  display: flex;
+  text-transform: uppercase;
+  color: rgb(174, 230, 20);
+  font-size: 1em;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+nav li {
+  margin: auto 2em auto 2em;
+  letter-spacing: 0.1em;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: 'header picture';
+  column-gap: 3%;
+  width: 90%;
+  margin: 6em auto 0 auto;
+}
+
+.overview :nth-child(1) {
+  grid-area: header;
+}
+
+.overview :nth-child(2) {
+  grid-area: picture;
+}
+
+
+
+.overview > h1 {
+  color: rgb(72, 212, 8);
+  font-size: 7vw;
+  text-align: left;
+  margin: auto 0 auto 0;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.overview img {
+  border-bottom-left-radius: 2em;
+  border-top-right-radius: 2em;
+  opacity: 0.9;
+  width: 100%;
+
+  /* box-shadow: 5px 10px 18px rgb(204, 212, 223); */
+}
+
+.start-now {
+  text-align: center;
+  margin-top: 30vh;
+  margin-bottom: 30vh;
+}
+
+.start-now button {
+  background-color: rgb(138, 223, 26);
+  border-radius: 2em;
+  border: none;
+  color: rgb(8, 79, 141);
+  width: 14em;
+  height: 4em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: 'Abel', sans-serif;
+}
+
+.how-it-works {
+  background-color: rgba(208, 243, 162, 0.808);
+}
+
+.how-it-works h1 {
+  color: rgb(49, 120, 182);
+  font-size: 6em;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 10vh 0 5vh 0;
+}
+
+.how-it-works > p {
+  text-align: center;
+  font-size: 3em;
+  color: rgb(85, 158, 223);
+  line-height: 12vh;
+}
+
+.how-it-works:nth-child(4) {
+  padding-bottom: 5vh;
+}
+
+.contact-us {
+  text-align: center;
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+}
+
+.contact-us button {
+  background-color: rgb(8, 79, 141);
+  border-radius: 2em;
+  border: none;
+  color: rgb(138, 223, 26);
+  width: 14em;
+  height: 4em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: 'Abel', sans-serif;
+}
+
+footer {
+  border-top: 1px solid rgb(138, 223, 26);
+  padding-top: 1em;
+  width: 100%;
+  margin: 0 auto 1em auto;
+  color: rgb(8, 79, 141);
+}
+
+@media (max-width: 600px) {
+  .overview {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      'header'
+      'picture';
+    margin-top: 0.1em;
+  }
+
+  .overview > h1 {
+    text-align: center;
+  }
+
+  body {
+    font-size: 12px;
+  }
+}
