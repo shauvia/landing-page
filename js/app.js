@@ -1,17 +1,81 @@
+function MenuItem (name, targetSectionId) {
+  this.name = name;
+  this.targetSectionId = targetSectionId;
+}
 
-function createsMenu() {
-  let menuItemsArray = ['Overview', 'How it works', 'Start now!', 'Contact us!']
+const menuItemArray = [new MenuItem('Overview','overview'), new MenuItem('Start now!', 'start-now'), new MenuItem('How it works', 'how-it-works'), new MenuItem('Contact us!', 'contact-us') ];
+
+
+function createsMenu(array) {
   let menu = document.querySelector('.menu');
-  let menuTable = document.createElement('ul');
-  menu.appendChild(menuTable);
-  for (el of menuItemsArray) {
+  let menuList = document.createElement('ul');
+  menu.appendChild(menuList);
+  for (let el of array) {
+    // let menuAnchor = document.createElement('a');
+    // menuAnchor.setAttribute('myId', el.href);
+    // menuAnchor.setAttribute('href', el.href);
     let menuItem = document.createElement('li');
-    menuItem.textContent = el;
-    menuTable.appendChild(menuItem);
+    menuItem.textContent = el.name;
+    // menuList.appendChild(menuAnchor);
+    menuList.appendChild(menuItem);
+  }
+}
+createsMenu(menuItemArray);
+
+let elements = document.querySelectorAll('li');
+
+// element.addEventListener('click', function() {
+//   window.scrollTo({
+//     top: event.target.skoczdo,
+//     left: 0,
+//     behavior: 'smooth'
+//   });
+// });
+
+function clickHandler(e){
+  let target = e.target;
+  console.log('el clicked ' + target.tagName + ' ' + target.textContent);
+  if (target === elements[0]){
+    window.scrollTo({
+      top: distanceFromPageTop(menuItemArray[0].targetSectionId),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }  
+  if (target === elements[1]){
+    window.scrollTo({
+      top: distanceFromPageTop(menuItemArray[1].targetSectionId),
+      left: 0,
+      behavior: 'smooth'
+    });  
+  }
+  if (target === elements[2]){
+    window.scrollTo({
+      top: distanceFromPageTop(menuItemArray[2].targetSectionId),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }  
+  if (target === elements[3]){
+    window.scrollTo({
+      top: distanceFromPageTop(menuItemArray[3].targetSectionId),
+      left: 0,
+      behavior: 'smooth'
+    }); 
   }
 }
 
-createsMenu();
+for (let el of elements) {
+  el.addEventListener('click', clickHandler);
+}
 
-// nanodegreeCard.textContent = "I will be the updated text for the nanodegreeCard element!";
+function distanceFromPageTop(string){
+  let elementRectangle = document.getElementById(string).getBoundingClientRect();
+  let vieportTopToPageTop = window.scrollY;
+  let elementTopToViewportTop = elementRectangle.top;
+  let elementTopToPageTop = vieportTopToPageTop + elementTopToViewportTop;
+  console.log('elementRectangle: ' + elementRectangle + ' elementScroll: ' + vieportTopToPageTop + ' vieportTopToPageTop: ' + vieportTopToPageTop + ' elementTopToViewportTop: ' + elementTopToViewportTop);
+  return elementTopToPageTop;
+}
+
 
