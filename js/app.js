@@ -79,3 +79,18 @@ function distanceFromPageTop(string){
 }
 
 
+function isInVieport(){
+  let viewportHeight = window.innerHeight;
+  for (let object of menuItemArray){
+    let element = document.getElementById(object.targetSectionId);
+    let elementRect = element.getBoundingClientRect();
+    let elementTop = elementRect.top; 
+    if (elementTop > -viewportHeight * 0.15 && elementTop < viewportHeight * 0.5) {
+      element.className = 'inViewport';
+    } else {
+      element.className = '';
+    }
+  }
+}
+
+window.addEventListener('scroll', isInVieport);

@@ -38,8 +38,7 @@ nav li {
   grid-template-rows: 1fr;
   grid-template-areas: 'header picture';
   column-gap: 3%;
-  width: 90%;
-  margin: 6em auto 0 auto;
+  padding: 5em 2em 1em 2em;
 }
 
 #overview :nth-child(1) {
@@ -70,8 +69,8 @@ nav li {
 
 #start-now {
   text-align: center;
-  margin-top: 30vh;
-  margin-bottom: 30vh;
+  padding-top: 9em;
+  padding-bottom: 9em;
 }
 
 #start-now button {
@@ -88,7 +87,7 @@ nav li {
 }
 
 #how-it-works {
-  background-color: rgba(208, 243, 162, 0#808);
+  padding-bottom: 3em;
 }
 
 #how-it-works h1 {
@@ -96,7 +95,7 @@ nav li {
   font-size: 6em;
   text-align: center;
   letter-spacing: 1px;
-  padding: 10vh 0 5vh 0;
+  padding: 0.5em 0 0.5em 0;
 }
 
 #how-it-works > p {
@@ -106,14 +105,10 @@ nav li {
   line-height: 12vh;
 }
 
-#how-it-works:nth-child(4) {
-  padding-bottom: 5vh;
-}
-
 #contact-us {
   text-align: center;
-  margin-top: 20vh;
-  margin-bottom: 20vh;
+  padding-top: 9em;
+  padding-bottom: 9em;
 }
 
 #contact-us button {
@@ -137,6 +132,11 @@ footer {
   color: rgb(8, 79, 141);
 }
 
+.inViewport {
+  background-color: rgb(183, 221, 255);
+}
+
+
 @media (max-width: 600px) {
   #overview {
     display: grid;
@@ -145,7 +145,7 @@ footer {
     grid-template-areas:
       'header'
       'picture';
-    margin-top: 0.1em;
+    padding-top: 2em;
   }
 
   #overview > h1 {
