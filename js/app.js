@@ -69,12 +69,15 @@ for (let el of elements) {
   el.addEventListener('click', clickHandler);
 }
 
+let headerRectangle = document.getElementById('header').getBoundingClientRect();
+let headerHeight = headerRectangle.height;
+
 function distanceFromPageTop(string){
   let elementRectangle = document.getElementById(string).getBoundingClientRect();
   let vieportTopToPageTop = window.scrollY;
   let elementTopToViewportTop = elementRectangle.top;
-  let elementTopToPageTop = vieportTopToPageTop + elementTopToViewportTop;
-  console.log('elementRectangle: ' + elementRectangle + ' elementScroll: ' + vieportTopToPageTop + ' vieportTopToPageTop: ' + vieportTopToPageTop + ' elementTopToViewportTop: ' + elementTopToViewportTop);
+  let elementTopToPageTop = vieportTopToPageTop + elementTopToViewportTop - headerHeight; //odjąć jeszcze wysokość navbara do tego, aby się dobrze przewijało 
+  // console.log('elementRectangle: ' + elementRectangle + ' elementScroll: ' + vieportTopToPageTop + ' vieportTopToPageTop: ' + vieportTopToPageTop + ' elementTopToViewportTop: ' + elementTopToViewportTop);
   return elementTopToPageTop;
 }
 
@@ -84,8 +87,8 @@ function isInVieport(){
   for (let object of menuItemArray){
     let element = document.getElementById(object.targetSectionId);
     let elementRect = element.getBoundingClientRect();
-    let elementTop = elementRect.top; 
-    if (elementTop > -viewportHeight * 0.15 && elementTop < viewportHeight * 0.5) {
+    let elementTop = elementRect.top;
+    if ((elementTop > -viewportHeight * 0.15 + headerHeight) && (elementTop < viewportHeight * 0.4 + headerHeight)) {
       element.className = 'inViewport';
     } else {
       element.className = '';

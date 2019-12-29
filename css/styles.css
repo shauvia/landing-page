@@ -5,11 +5,18 @@ body {
   font-size: 16px;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
 nav {
   display: flex;
   flex-direction: row;
   background-color: rgb(8, 79, 141);
-  height: 15vh;
+  height: 8em;
 }
 
 nav > ul {
@@ -20,16 +27,16 @@ nav > ul {
   list-style: none;
 }
 
-nav a {
-  display: flex;
-  text-decoration: none;
-}
-
 nav li {
   margin: auto 2em auto 2em;
   letter-spacing: 0.1em;
   color: rgb(174, 230, 20);
   font-size: 1em;
+}
+
+nav li:hover {
+  cursor: pointer;
+  color: rgb(138, 185, 7);
 }
 
 #overview {
@@ -38,7 +45,10 @@ nav li {
   grid-template-rows: 1fr;
   grid-template-areas: 'header picture';
   column-gap: 3%;
-  padding: 5em 2em 1em 2em;
+  margin: 4vh 0 4vh 0;
+  min-height: 50vh
+
+  /* padding: 5em 2em 1em 2em; */
 }
 
 #overview :nth-child(1) {
@@ -53,24 +63,24 @@ nav li {
   color: rgb(72, 212, 8);
   font-size: 7vw;
   text-align: left;
-  margin: auto 0 auto 0;
-  letter-spacing: 1px;
-  width: 100%;
+  margin: auto 0 auto auto;
+  width: 90%;
 }
 
 #overview img {
   border-bottom-left-radius: 2em;
   border-top-right-radius: 2em;
   opacity: 0.9;
-  width: 100%;
-
-  /* box-shadow: 5px 10px 18px rgb(204, 212, 223); */
+  width: 90%;
+  margin: auto 0 auto 0;
 }
 
 #start-now {
-  text-align: center;
-  padding-top: 9em;
-  padding-bottom: 9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  margin: auto 0 auto 0;
 }
 
 #start-now button {
@@ -86,8 +96,14 @@ nav li {
   font-family: 'Abel', sans-serif;
 }
 
+#start-now button:hover {
+  cursor: pointer;
+  background-color: rgb(138, 185, 7);
+}
+
 #how-it-works {
-  padding-bottom: 3em;
+  /* padding-bottom: 3em; */
+  min-height: 50vh;
 }
 
 #how-it-works h1 {
@@ -106,9 +122,10 @@ nav li {
 }
 
 #contact-us {
-  text-align: center;
-  padding-top: 9em;
-  padding-bottom: 9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
 }
 
 #contact-us button {
@@ -124,8 +141,13 @@ nav li {
   font-family: 'Abel', sans-serif;
 }
 
+#contact-us button:hover {
+  cursor: pointer;
+  background-color: rgb(5, 105, 192);
+}
+
 footer {
-  border-top: 1px solid rgb(138, 223, 26);
+  border-top: 1px solid rgb(122, 188, 247);
   padding-top: 1em;
   width: 100%;
   margin: 0 auto 1em auto;
@@ -136,7 +158,6 @@ footer {
   background-color: rgb(183, 221, 255);
 }
 
-
 @media (max-width: 600px) {
   #overview {
     display: grid;
@@ -145,11 +166,18 @@ footer {
     grid-template-areas:
       'header'
       'picture';
-    padding-top: 2em;
+
+    /* padding-top: 2em; */
+    min-height: 50vh;
   }
 
   #overview > h1 {
     text-align: center;
+    margin: auto;
+  }
+
+  #overview img {
+    margin: auto;
   }
 
   body {
