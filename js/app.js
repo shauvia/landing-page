@@ -5,10 +5,13 @@ function MenuItem (name, targetSectionId) {
 
 const menuItemArray = [new MenuItem('Overview','overview'), new MenuItem('Start now!', 'start-now'), new MenuItem('How it works', 'how-it-works'), new MenuItem('Contact us!', 'contact-us') ];
 
+const headerRectangle = document.getElementById('header').getBoundingClientRect();
+const headerHeight = headerRectangle.height;
 
-function createsMenu(array) {
-  let menu = document.querySelector('.menu');
-  let menuList = document.createElement('ul');
+// function that creates menu based on menuItemArray;
+function createMenu(array) {
+  const menu = document.querySelector('.menu');
+  const menuList = document.createElement('ul');
   menu.appendChild(menuList);
   for (let el of array) {
     // let menuAnchor = document.createElement('a');
@@ -20,20 +23,19 @@ function createsMenu(array) {
     menuList.appendChild(menuItem);
   }
 }
-createsMenu(menuItemArray);
 
-let elements = document.querySelectorAll('li');
+// function that returns the distance between the element and page top;
+function distanceFromPageTop(string){
+  const elementRectangle = document.getElementById(string).getBoundingClientRect();
+  const vieportTopToPageTop = window.scrollY;
+  const elementTopToViewportTop = elementRectangle.top;
+  const elementTopToPageTop = vieportTopToPageTop + elementTopToViewportTop - headerHeight; //o
+  return elementTopToPageTop;
+}
 
-// element.addEventListener('click', function() {
-//   window.scrollTo({
-//     top: event.target.skoczdo,
-//     left: 0,
-//     behavior: 'smooth'
-//   });
-// });
-
+// function that handles the click event on the menu item and scroll to the correct page section;
 function clickHandler(e){
-  let target = e.target;
+  const target = e.target;
   console.log('el clicked ' + target.tagName + ' ' + target.textContent);
   if (target === elements[0]){
     window.scrollTo({
@@ -65,25 +67,9 @@ function clickHandler(e){
   }
 }
 
-for (let el of elements) {
-  el.addEventListener('click', clickHandler);
-}
-
-let headerRectangle = document.getElementById('header').getBoundingClientRect();
-let headerHeight = headerRectangle.height;
-
-function distanceFromPageTop(string){
-  let elementRectangle = document.getElementById(string).getBoundingClientRect();
-  let vieportTopToPageTop = window.scrollY;
-  let elementTopToViewportTop = elementRectangle.top;
-  let elementTopToPageTop = vieportTopToPageTop + elementTopToViewportTop - headerHeight; //odjąć jeszcze wysokość navbara do tego, aby się dobrze przewijało 
-  // console.log('elementRectangle: ' + elementRectangle + ' elementScroll: ' + vieportTopToPageTop + ' vieportTopToPageTop: ' + vieportTopToPageTop + ' elementTopToViewportTop: ' + elementTopToViewportTop);
-  return elementTopToPageTop;
-}
-
-
+// function that checks if the element is in a vieport;
 function isInVieport(){
-  let viewportHeight = window.innerHeight;
+  const viewportHeight = window.innerHeight;
   for (let object of menuItemArray){
     let element = document.getElementById(object.targetSectionId);
     let elementRect = element.getBoundingClientRect();
@@ -94,6 +80,13 @@ function isInVieport(){
       element.className = '';
     }
   }
+}
+
+createMenu(menuItemArray);
+
+const elements = document.querySelectorAll('li');
+for (let el of elements) {
+  el.addEventListener('click', clickHandler);
 }
 
 window.addEventListener('scroll', isInVieport);
